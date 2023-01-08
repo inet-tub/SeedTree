@@ -41,10 +41,7 @@ class randomPush():
         """ pulls up v,
             pushes root down one step along the path to random_item at v.dep """
         parent = self.tree.root
-        #if type(item_id) == int:
         path = self.tree.get_hash(item_id)
-     #   else:
-      #      path = self.tree.get_hash_str(item_id)
         if self.debug:
             print("Got hash " + str(path) + " for item " + str(item_id))
         if parent.check_for_item(item_id):      # root access
@@ -84,12 +81,10 @@ class randomPush():
         else:
             self.tree.root.insert(item_id)
         trials = int(self.tree.initial_occupation) * 100
-        #for j in range(0, trials):
         start = time.time()
         elapsed = 0
         while elapsed < 30:  # while less than 30 seconds have elapsed
             path_trial = self.check_path(depth=depth)
-            #if j > trials*0.9:     # print log if we get to difficulties
             if elapsed > 28:
                 self.debug = True
             if path_trial:
@@ -169,18 +164,12 @@ class randomPush():
                 if self.debug:
                     print("(!!) Pushing down item " + str(moving_item) + " to dep " + str(i+1) + " with step: " +
                           str(self.tree.get_hash(moving_item)[i]) + ", hash = " + str(self.tree.get_hash(moving_item)))
-            #self.max_pushed_level = i + 1
-            #bef_making_space = self.moves  # used to record current depth before eventually starting make_avail
             if self.tree.get_hash(moving_item)[i] == '1':
                 parent.left.insert(moving_item, buffer = True)
                 parent = parent.left
             elif self.tree.get_hash(moving_item)[i] == '0':
                 parent.right.insert(moving_item, buffer = True)
                 parent = parent.right
-            #movements = self.moves - bef_making_space
-            #i += movements  # count how many items were pushed additionally
-            #if movements > 0:
-             #   parent = self.last_reached_server       # jump to the last server used by make_avail
             i += 1
             self.moves += 1  # add cost for moving item from parent to child
 

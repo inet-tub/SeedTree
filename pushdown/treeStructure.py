@@ -126,22 +126,12 @@ class CompleteTree:
     def insert(self, item_id):
         """Insert a new value in the tree. Takes one argument (the Item) """
         parent = self.root
-        #self.calc_set_hash(new_item=newItem)
-        # check if key=item_id already in tree
-        #if newItem.id in self.index2item_id:
-            #print(str(newItem.id) + " already in tree")
-         #   return
         if parent.get_current_occupation() < self.initial_occupation:
             parent.insert(item_id)
         else:
-            #if type(item_id) == int:
-            path = self.get_hash(item_id) #newItem.get_hash()
-          #  else:
-           #     path = self.get_hash_str(item_id)
-            #print(path)
+            path = self.get_hash(item_id)
             for i in range(0, len(path)):
                 step = path[i]
-                #print(step)
                 if step == '1':       # 1 == left step
                     if not parent.left:        # if there is no server left on this path, add on the fly
                         currIndex = len(self.index2server)

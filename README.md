@@ -9,7 +9,7 @@ For the plotting functionality, other packages such as ```seaborn``` are used. A
 
 ## Experiments
 
-The experimentation code can be found in ```simulation/server_experiment.py```. It uses 
+The experimentation code can be found in ```simulation/server_experiment.py```. It fetches the datasets from ```temp-seq``` and ```real-seq``` and uses the code of the ```pushdown``` folder to run the algorithms on the defined data-structure.
 
 ### Experiment setup
 

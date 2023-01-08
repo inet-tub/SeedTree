@@ -24,8 +24,7 @@ class server_experiment():
                         distinct_items = set()
                         n_simulations += 1
                         sum_cost_algo = 0
-                        for i in range(0,len(dataset[data][sample][trace])): #in dataset[data][sample][trace]:
-                            #print(dataset[data][sample][trace])
+                        for i in range(0,len(dataset[data][sample][trace])):
                             distinct_items.add(dataset[data][sample][trace][i])
 
                         print(distinct_items)
@@ -56,8 +55,7 @@ class server_experiment():
                         else:
                             algo = randomPush(on_tree)
                         acc_obl = static_offline(obl_tree)
-                        #print_tree(ct1.root)
-                        for i in range(0,len(dataset[data][sample][trace])):#for r in dataset[data][sample][trace]:
+                        for i in range(0,len(dataset[data][sample][trace])):
                             algo.access(dataset[data][sample][trace][i])
                             acc_obl.access(dataset[data][sample][trace][i])
                         print("Total items: " + str(len(distinct_items)))
@@ -95,10 +93,8 @@ class server_experiment():
                         distinct_items = set()
                         n_simulations += 1
                         sum_cost_algo = 0
-                        #print(len(dataset[data][sample][trace]))
-                        for i in range(0,len(dataset[data][sample][trace])): #in dataset[data][sample][trace]:
+                        for i in range(0,len(dataset[data][sample][trace])):
                             distinct_items.add(dataset[data][sample][trace][i])
-                        #logger.write((", n_items" + str(sample) + ": " + str(len(distinct_items))))
                         on_tree = CompleteTree()
                         obl_tree = CompleteTree()
                         on_tree.set_c_set_f(c=c, f=f)
@@ -125,7 +121,7 @@ class server_experiment():
                         else:
                             algo = randomPush(on_tree)
                         acc_obl = static_offline(obl_tree)
-                        for i in range(0,len(dataset[data][sample][trace])):#for r in dataset[data][sample][trace]:
+                        for i in range(0,len(dataset[data][sample][trace])):
                             algo.access(dataset[data][sample][trace][i])
                             acc_obl.access(dataset[data][sample][trace][i])
 
@@ -142,7 +138,6 @@ class server_experiment():
                         logger2.write("ALGO: Access cost: " + str(algo.access_cost)+ "\n")
                         logger2.write("OBL: Access cost: " + str(acc_obl.access_cost) + "\n")
                         print("")
-        #logger.close()
         logger2.close()
     
     def run_off_on(self, p, c):
@@ -269,7 +264,6 @@ class server_experiment():
                         algo = randomPush(on_tree)
                     acc_obl = static_offline(obl_tree)
                     for i in range(0, len(dataset[p][sample])):  # for r in dataset[data][sample][trace]:
-                        #print("Acessing " + str(dataset[p][sample][i]) + "index = " + str(i))
                         algo.access(dataset[p][sample][i])
                         acc_obl.access(dataset[p][sample][i])
 
@@ -334,7 +328,7 @@ class server_experiment():
                     for t in [on_tree, obl_tree]:
                         t.set_c(c)
                         t.initialize_servers(len(distinct_items))
-                        # set full initial occupation for obl
+                    # set full initial occupation for obl
                     obl_tree.initial_occupation = c
 
                     # insert for on_tree
@@ -414,7 +408,6 @@ class server_experiment():
                     for item in distinct_items:
                         ct1.insert(item)
                     algo = randomPush(ct1)
-                    #print_tree(ct1.root)
                     for r in dataset[str(p)][sample]:
                         algo.access(dataset[p][sample][r])
                     print("Total items: " + str(len(distinct_items)))
